@@ -12,7 +12,10 @@
 }
 
 .vertex {
+  background: lightgreen;
   position: absolute;
+  width: 10%;
+  height: 10%;
   border: solid green;
   border-radius: 50%;
 }
