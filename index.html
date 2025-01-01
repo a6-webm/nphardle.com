@@ -5,14 +5,34 @@
   <title>NP-Hardle</title>
   <script src="/js/alpine_3_14_8.js" defer></script>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/styles.css">
+  <!-- TODO actual favicon (maybe as an ico? idk) -->
+  <link rel="shortcut icon" href="/favicon.png">
 </head>
 
 <body>
 
   <p>ollo</p>
-  <div id="game">
-    <div class="test_cube" style="position: relative; top: "></div>
+  <!-- TODO initialise graph data in x-data down there -->
+  <!-- TODO does this way of doing this mean the whole graph gets redrawn on each change? -->
+  <div id="game" x-data="{ vertices: [], edges: [] }" x-init="
+    puzzles = await (await fetch('/puzzles/puzzles.json')).json();
+    graph_data = puzzles[0] // TODO make this get the puzzle for the current day
+    vertices = graph_data.vertices;
+    edges = graph_data.edges;
+  ">
+    <div id="graph">
+      <template x-for="vertex in vertices">
+        <span class="vertex" :style="
+          { bottom: vertex.x + '%', left: vertex.y + '%' }
+        ">
+        </span>
+      </template>
+      <template x-for="edge in edges">
+      </template>
+    </div>
+    <>
+      <div class="test_cube" style="position: relative; top: "></div>
   </div>
 
 </body>

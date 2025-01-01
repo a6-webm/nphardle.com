@@ -1,0 +1,18 @@
+#game {
+  width: 500px;
+  height: 400px;
+  border: solid green;
+}
+
+#graph {
+  width: 400px;
+  height: 400px;
+  border: solid red;
+  position: relative;
+}
+
+.vertex {
+  position: absolute;
+  border: solid green;
+  border-radius: 50%;
+}
